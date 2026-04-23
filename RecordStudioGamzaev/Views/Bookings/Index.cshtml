@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RecordStudioGamzaev.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bookings</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary mb-3">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white shadow-lg border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Studio.Name</h5>
+
+                    <p class="card-text">
+                        <strong>Start:</strong> @item.StartTime <br />
+                        <strong>End:</strong> @item.EndTime <br />
+                        <strong>Price:</strong> @item.Price ₽
+                    </p>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm text-white">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
